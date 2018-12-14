@@ -30,7 +30,7 @@ class App extends Component {
         <button onClick={this.switchNameHandler}>Switch Name</button>
         < Person name={this.state.person[0].name} age={this.state.person[0].age}/>
         < Person name={this.state.person[1].name} age={this.state.person[1].age}/>
-        < Person name={this.state.person[2].name} age={this.state.person[2].age} > I like tools </Person>
+        < Person name={this.state.person[2].name} age={this.state.person[2].age} click={this.switchNameHandler}> I like tools </Person>
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'duuuude'))
