@@ -19,7 +19,8 @@ class App extends Component {
         {name: newName, age: 26},
         {name: "Manu", age: 28},
         {name: "Stephanie", age: 24543}
-      ]
+      ],
+      showPersons: false
     })
   }
 
@@ -34,7 +35,8 @@ class App extends Component {
   }
 
   togglePersonsHandler = () => {
-    
+    const doesShow = this.state.showPersons
+    this.setState({showPersons: !doesShow})
   }
 
   render() {
@@ -52,22 +54,24 @@ class App extends Component {
         <h1>Hi I'm a React App</h1>
         <button 
          style={style}
-         onClick={() => this.switchNameHandler('Fatso')}>Switch Name</button>
-         <div>
-          < Person 
-          name={this.state.person[0].name}
-          age={this.state.person[0].age}/>
-          < Person 
-            name={this.state.person[1].name} 
-            age={this.state.person[1].age}
-            click={this.switchNameHandler.bind(this, 'Guatemala')}
-            changed={this.nameChangedHandler}
-            />
-          < Person 
-            name={this.state.person[2].name} 
-            age={this.state.person[2].age} 
-            click={this.switchNameHandler.bind(this, 'Carla')}> I like tools </Person>
-         </div>
+         onClick={this.togglePersonsHandler}>Switch Name</button>
+         { this.state.showPersons === true ? 
+          <div>
+            < Person 
+            name={this.state.person[0].name}
+            age={this.state.person[0].age}/>
+            < Person 
+              name={this.state.person[1].name} 
+              age={this.state.person[1].age}
+              click={this.switchNameHandler.bind(this, 'Guatemala')}
+              changed={this.nameChangedHandler}
+              />
+            < Person 
+              name={this.state.person[2].name} 
+              age={this.state.person[2].age} 
+              click={this.switchNameHandler.bind(this, 'Carla')}> I like tools </Person>
+          </div> : null
+         }
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'duuuude'))
