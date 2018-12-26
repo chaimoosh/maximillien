@@ -33,13 +33,18 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+    
+  }
+
   render() {
 
     const style = {
       backgroundColor: 'white',
       font: 'inherit',
       border: '1px solid blue',
-      padding: '8px'
+      padding: '8px',
+      cursor: 'pointer'
     }
 
     return (
@@ -48,19 +53,21 @@ class App extends Component {
         <button 
          style={style}
          onClick={() => this.switchNameHandler('Fatso')}>Switch Name</button>
-        < Person 
-         name={this.state.person[0].name}
-         age={this.state.person[0].age}/>
-        < Person 
-          name={this.state.person[1].name} 
-          age={this.state.person[1].age}
-          click={this.switchNameHandler.bind(this, 'Guatemala')}
-          changed={this.nameChangedHandler}
-          />
-        < Person 
-          name={this.state.person[2].name} 
-          age={this.state.person[2].age} 
-          click={this.switchNameHandler.bind(this, 'Carla')}> I like tools </Person>
+         <div>
+          < Person 
+          name={this.state.person[0].name}
+          age={this.state.person[0].age}/>
+          < Person 
+            name={this.state.person[1].name} 
+            age={this.state.person[1].age}
+            click={this.switchNameHandler.bind(this, 'Guatemala')}
+            changed={this.nameChangedHandler}
+            />
+          < Person 
+            name={this.state.person[2].name} 
+            age={this.state.person[2].age} 
+            click={this.switchNameHandler.bind(this, 'Carla')}> I like tools </Person>
+         </div>
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'duuuude'))
