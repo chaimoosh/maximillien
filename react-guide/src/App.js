@@ -5,7 +5,7 @@ import Person from './Person/Person'
 class App extends Component {
 
   state = {
-    person: [
+    persons: [
       {name: "Max", age: 26},
       {name: "Manu", age: 28},
       {name: "Stephanie", age: 25}
@@ -15,7 +15,7 @@ class App extends Component {
   switchNameHandler = (newName) => {
     //console.log('Clicked!!')
     this.setState({ 
-      person: [
+      persons: [
         {name: newName, age: 26},
         {name: "Manu", age: 28},
         {name: "Stephanie", age: 24543}
@@ -26,7 +26,7 @@ class App extends Component {
 
   nameChangedHandler = (event) => {
     this.setState({
-      person: [
+      persons: [
         {name: "Max", age: 26},
         {name: event.target.value, age: 28},
         {name: "Stephanie", age: 25}
@@ -54,19 +54,9 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          < Person 
-          name={this.state.person[0].name}
-          age={this.state.person[0].age}/>
-          < Person 
-            name={this.state.person[1].name} 
-            age={this.state.person[1].age}
-            click={this.switchNameHandler.bind(this, 'Guatemala')}
-            changed={this.nameChangedHandler}
-            />
-          < Person 
-            name={this.state.person[2].name} 
-            age={this.state.person[2].age} 
-            click={this.switchNameHandler.bind(this, 'Carla')}> I like tools </Person>
+          {this.state.persons.map(person => {
+            return <Person name={person.name} age={person.age} />
+          })}
         </div>
       )
     }
