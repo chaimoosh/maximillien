@@ -66,6 +66,7 @@ class App extends Component {
           })}
         </div>
       )
+      style.backgroundColor = 'red'
     }
 
     return (
@@ -73,7 +74,7 @@ class App extends Component {
         <h1>Hi I'm a React App</h1>
         <button 
          style={style}
-         onClick={this.togglePersonsHandler}>Switch Name</button>
+         onClick={this.togglePersonsHandler}>Toggle Persons</button>
          {persons}
       </div>
     );
