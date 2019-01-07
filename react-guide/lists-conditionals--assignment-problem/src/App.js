@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ValidationComponent from './validationComponent';
+import CharComponent from './charComponent';
 
 class App extends Component {
 
@@ -17,12 +18,28 @@ class App extends Component {
     this.setState({string: event.target.value})
   }
 
+  deleteChar = (index) => {
+    let newString = this.state.string.split('')
+    newString.splice(index, 1);
+    let string = newString.join('')
+    this.setState({string: string})
+  }
+
   render() {
+    let chars = (
+      <div>
+        {this.state.string.split('').map((char, index) => {
+          return <CharComponent letter={char} key={index} clicked={() => this.deleteChar(index)}/>
+        })}
+      </div>
+    )
+
     return (
       <div className="App">
         <input type="text" value={this.state.string} onChange={this.updateString} />
         <p>{this.state.string}</p>
         < ValidationComponent length={this.state.string.length} longEnough={this.state.longEnough}/>
+        {chars}
         <ol>
           <li>Create an input field (in App component) with a change listener which outputs the length of the entered text below it (e.g. in a paragraph).</li>
           <li>Create a new component (=> ValidationComponent) which receives the text length as a prop</li>
